@@ -1,20 +1,17 @@
 import React from 'react'
 import Item from '../item/item'
+import './itemList.css'
 
 function ItemList(props) {
   return (
-    <div>
-      <p>Hola</p>
+    <div className="List">
       {
-        console.log(props.list)
-        /*props.list.map((item) => {
+        props.list.map((item) => {
           return <Item {...item} key={item.id} />
-        })*/
+        })
       }
     </div>
   )
-
 }
-
 
 export default ItemList

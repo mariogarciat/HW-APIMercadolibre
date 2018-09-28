@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 import Search from './components/search/search'
 import List from './components/list/itemList'
-import axios from 'axios';
+import axios from 'axios'
 //?q={busqueda}?limit=10
 const URL_BASE = "https://api.mercadolibre.com/"
 const URL_SEARCH = URL_BASE + "sites/MCO/search"
@@ -11,15 +11,13 @@ class App extends Component {
 
   state = {
     value: '',
-    data: {},
+    data: [],
     limit: 10
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.input.value, ' Submit');
     this.searchItems()
-    alert(this.input.value)
   }
 
   setInputRef = element => {
@@ -34,9 +32,9 @@ class App extends Component {
 
   async searchItems() {
     const url = URL_SEARCH
-    const resultList =  await axios.get(`${url}?q=${this.state.value}&limit=${this.state.limit}`)
-    this.setState({data: resultList.data.results})
-    //console.log(data)
+    const resultList = await axios.get(`${url}?q=${this.state.value}&limit=${this.state.limit}`)
+    this.setState({ data: resultList.data.results })
+    console.log(this.state.data)
   }
 
   render() {
@@ -51,13 +49,12 @@ class App extends Component {
             value={this.state.value}
           />
         </header>
-        <p>dsf{this.state.value}</p>
-
-        <List list={this.state.data}/>
-
+        <div className="App-list">
+          <List list={this.state.data} />
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+export default App

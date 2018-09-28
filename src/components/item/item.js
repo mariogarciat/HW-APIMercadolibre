@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
+import './item.css'
 
 class Item extends Component {
 
     constructor(props) {
         super(props)
-
     }
 
     render() {
         return (
-            <div>
+            <div className="Item"> 
                 <img src={this.props.thumbnail}/>
-                <h3>{this.props.title}</h3>
+                <h4>{this.props.title}</h4>
+                <h5>Price: ${this.props.price}</h5>
             </div>
         )
     }
